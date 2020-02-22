@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -19,8 +20,8 @@ public class MadlibsModel {
 
 	private int maxPosition;
 	private int guesses;
-	private HashMap<String, String> posMap;
-	private HashMap<Integer, String> guessMap;
+	private Map<String, String> posMap;
+	private Map<Integer, String> guessMap;
 	private String templateString;
 	public MadlibsModel()
 	{
@@ -30,11 +31,12 @@ public class MadlibsModel {
 		this.generateTemplate();
 		this.guessMap = this.makeGuessMap();
 		this.guesses = 0;
+		System.gc();
 	}
 	
-	private HashMap<String, String> makePosMap()
+	private Map<String, String> makePosMap()
 	{
-		HashMap<String, String> posMap = new HashMap<String, String>();
+		Map<String, String> posMap = new ArrayMap<String, String>();
 		File f = new File(this.POS_FILENAME);
 		Scanner fscanner = null;
 		try {
@@ -73,9 +75,9 @@ public class MadlibsModel {
 	}
 	
 	
-	private HashMap<Integer, String> makeGuessMap()
+	private Map<Integer, String> makeGuessMap()
 	{
-		HashMap<Integer, String> guessMap = new HashMap<Integer, String>();
+		ArrayMap<Integer, String> guessMap = new ArrayMap<Integer, String>();
 		File f = new File(this.TEMPLATE_FILENAME);
 		Scanner fscanner = null;
 		try {
@@ -132,7 +134,7 @@ public class MadlibsModel {
 		return this.guesses;
 	}
 	
-	public HashMap<String, String> getPOSMap()
+	public Map<String, String> getPOSMap()
 	{
 		return this.posMap;
 	}

@@ -49,7 +49,7 @@ public class Madlibs {
 			
 		}
 		
-		//controller = new MadlibsController();
+		controller = new MadlibsController();
 
 	}
 	
