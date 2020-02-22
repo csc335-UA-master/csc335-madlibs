@@ -14,13 +14,15 @@ public class Madlibs {
 		//while user is playing
 		while(!playscanner.nextLine().equalsIgnoreCase("No"))
 		{
+			
 			Scanner intscanner = new Scanner(System.in);
 			Scanner scanner = new Scanner(System.in);
+			printMessage(controller);
 			while(!controller.gameOver())
 			{
 				int position = -1;
 				//String replacement = "";
-				printMessage(controller);
+				
 				System.out.println("Enter a position to replace: ");
 				try {
 					
@@ -28,6 +30,7 @@ public class Madlibs {
 					System.out.println("Enter a replacement \"" + controller.getPOS(position) + "\": ");
 					String replacement = scanner.nextLine();
 					controller.makeGuess(position, replacement);
+					printMessage(controller);
 				}
 				catch(MadlibsIllegalPositionException e)
 				{
@@ -36,19 +39,22 @@ public class Madlibs {
 				}
 				catch(MadlibsIllegalPOSException e)
 				{
-					System.err.println("Invalid Position, please enter another position");
+					System.err.println("Guess was not the correct POS, please enter another position");
 					continue;
 				}
 				
 			}
+			
+			System.out.println("\nYou have completed the puzzle, would you like to play again?");
+			
 		}
 		
-		
+		//controller = new MadlibsController();
 
 	}
 	
 	private static void printMessage(MadlibsController c)
 	{
-		System.out.println(c.getTemplate());
+		System.out.println("\n" + c.getTemplate());
 	}
 }

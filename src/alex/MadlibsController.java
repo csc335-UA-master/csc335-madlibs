@@ -11,13 +11,20 @@ public class MadlibsController {
 	
 	public boolean gameOver()
 	{
-		return false;
+		return model.getGuesses() == model.getMaxPosition();
 	}
 	
 	
 	public void makeGuess(int position, String replacement) throws MadlibsIllegalPOSException
 	{
-		this.model.replace(position, replacement);
+		if(this.model.getPOSMap().get(replacement.toLowerCase()).toUpperCase().equals(this.model.getPOS(position)))
+		{
+			this.model.replace(position, replacement);
+		}
+		else
+		{
+			throw new MadlibsIllegalPOSException("Bad POS");
+		}
 	}
 	
 	public String getTemplate()

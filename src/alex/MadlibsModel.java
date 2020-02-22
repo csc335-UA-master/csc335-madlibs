@@ -4,27 +4,32 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class MadlibsModel {
 	private static final String POS_FILENAME = "C:\\Users\\alexa\\git\\csc335-madlibs\\parts_of_speech.txt";
 	private static final String TEMPLATE_FILENAME = "C:\\Users\\alexa\\git\\csc335-madlibs\\templates.txt";
 
 	private int maxPosition;
+	private int guesses;
 	private HashMap<String, String> posMap;
 	private HashMap<Integer, String> guessMap;
 	private String templateString;
 	public MadlibsModel()
 	{
 	
-		this.maxPosition = 2;
+		this.maxPosition = 0;
 		this.posMap = this.makePosMap();
 		this.generateTemplate();
 		this.guessMap = this.makeGuessMap();
+		this.guesses = 0;
 	}
 	
 	private HashMap<String, String> makePosMap()
@@ -62,9 +67,8 @@ public class MadlibsModel {
 		while (scanner.hasNextLine()) {
 			quotes.add(scanner.nextLine());
 		}
-		scanner.close();
-		Random rand = new Random();
-		templateString = quotes.get(rand.nextInt(quotes.size() - 1)).toUpperCase();
+		Collections.shuffle(quotes);
+		templateString = quotes.get(0).toUpperCase();
 	
 	}
 	
@@ -86,6 +90,7 @@ public class MadlibsModel {
 		Matcher match= p.matcher(line);
 		while (match.find() == true) {
 			targetKeyValues.add(match.group(1));
+			this.maxPosition += 1;
 		}
 		
 		for (String line2: targetKeyValues) {
@@ -111,9 +116,25 @@ public class MadlibsModel {
 	
 	public void replace(int position, String replacement)
 	{
-		System.out.println("(" + String.valueOf(position) + ": " + this.guessMap.get(position) + ")");
+		//System.out.println("(" + String.valueOf(position) + ": " + this.guessMap.get(position) + ")");
 		this.templateString = this.templateString.replace("(" + String.valueOf(position) + ": " + this.guessMap.get(position) + ")", "(" + String.valueOf(position) + ": " + replacement.toUpperCase() + ")");
 		this.guessMap.replace(position, replacement);
+		this.guesses += 1;
+	}
+
+	public int getMaxPosition() {
+		// TODO Auto-generated method stub
+		return this.maxPosition;
+	}
+	
+	public int getGuesses()
+	{
+		return this.guesses;
+	}
+	
+	public HashMap<String, String> getPOSMap()
+	{
+		return this.posMap;
 	}
 		
 		
