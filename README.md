@@ -29,11 +29,11 @@ one of the templates from the file each run to begin the game.
 
 You will also need to read a file of words and their associated parts of speech,
 also provided as **parts_of_speech.txt**. Create a HashMap to store this file as
-well. Keep in mind that a word such as “dog” may count as both a noun (N) and a
+well. Keep in mind that a word such as â€œdogâ€ may count as both a noun (N) and a
 verb (V).
 
 If a user tries to replace a template mapping with a word not in the Map, or a
-word that doesn’t have the appropriate part of speech, *do something
+word that doesnâ€™t have the appropriate part of speech, *do something
 reasonable*.
 
 Part Of Speech Tags
@@ -46,7 +46,7 @@ These are the tags (in the templates) and what they mean for the user
 | ADJ     | Adjective                  |
 | N       | Noun                       |
 | PLN     | Plural Noun                |
-| GER     | Verb Ending In “-ing”      |
+| GER     | Verb Ending In â€œ-ingâ€      |
 | VPT     | Verb Past Tense            |
 | V       | Verb                       |
 | PN      | Proper Noun                |
@@ -58,7 +58,7 @@ Hint
 ------------
 
 To help us do the replacement, we will use a powerful text matching feature
-called “regular expressions”. Here’s some sample code that you should run and
+called â€œregular expressionsâ€. Hereâ€™s some sample code that you should run and
 understand that may be adaptable to your program.
 
 	//This string holds the template with parenthesized, all-caps placeholders
@@ -70,7 +70,7 @@ understand that may be adaptable to your program.
 	//The syntax looks frightening because parentheses have special meanings in
 	//regular expressions, so we need to escape them, and it's a Java String, so
 	//we need to escape the backslash to escape the parentheses.
-	Pattern p = Pattern.*compile*("\\\\([A-Z]+\\\\)");
+	Pattern p = Pattern.compile("\\\\([A-Z]+\\\\)");
 	
 	//We can then use a Matcher object to find matches in a source string
 	Matcher m = p.matcher(in);
@@ -98,7 +98,7 @@ understand that may be adaptable to your program.
 	
 	}
 	
-	System.*out*.println("Final string: " + out);
+	System.out.println("Final string: " + out);
 
 
 MVC
@@ -107,19 +107,18 @@ MVC
 You are required to create the game portion of the project using the MVC
 architectural pattern. You must have the following 3 classes:
 
->   1.       Madlibs – This is the main class. When run, the game will begin,
->   similarly to how a new game of Mastermind was played in the previous
->   project.
+   1.Â Â Â Â Â Â Â MadlibsÂ â€“ This is the main class. When run, the game will begin,
+   similarly to how a new game of Mastermind was played in the previous
+   project.
 
->   2.       MadlibsController – This class contains all of the string
->   replacement logic, all methods **must** be useful to the view, but not
->   actually contain any code that prints to the console.
+   2.Â Â Â Â Â Â Â MadlibsControllerÂ â€“ This class contains all of the string
+   replacement logic, all methods **must** be useful to the view, but not
+   actually contain any code that prints to the console.
 
->   3.       MadlibsModel – This class contains all of the data used to
->   represent the Madlibs game. In specific, you will need to store the Map of
->   empty spaces (and their according part of speech) to words.
-
->    
+   3.Â Â Â Â Â Â Â MadlibsModelÂ â€“ This class contains all of the data used to
+   represent the Madlibs game. In specific, you will need to store the Map of
+   empty spaces (and their according part of speech) to words.
+ Â 
 
 ArrayMap
 --------
@@ -230,7 +229,7 @@ Do not assume your ArrayMap will only be tested against the Cryptogram program.
 Make sure it works for any reasonable application.
 
 This means that you will need to do the ArrayList-style growth on your key and
-value arrays. You will need to have an initial capacity and when put() is unable
+value arrays. You will need to have an initial capacity and whenÂ put()Â is unable
 to find any space in the arrays, you will need to double their sizes and copy
 the old elements over.
 
@@ -261,7 +260,7 @@ As always, the last pushed commit prior to the due date will be graded.
 
 Credits
 ------------
-Our dictionary file, “parts\_of\_speech.txt” was borrowed from the Brown Corpus,
+Our dictionary file, â€œparts\_of\_speech.txtâ€ was borrowed from the Brown Corpus,
 with tags automatically generated from real world documents. There are many
 issues with the dictionary since part of speech tagging is an ongoing subject of
 research, but it will suffice for our purposes.
