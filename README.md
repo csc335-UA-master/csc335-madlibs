@@ -1,8 +1,7 @@
-
-#CSC 335 Project 3: Madlibs/ArrayMap  
-
-##Project Description
-
+CSC 335 Project 3: Madlibs/ArrayMap  
+=================
+Project Description
+------------
 For this project, we will use the Java Collections framework to define a custom
 collection that *is* a **Map**. To test it, you will write a word Madlibs-esque
 word puzzle which relies on your **Map** structure to function. This game should
@@ -10,20 +9,19 @@ first be written using the Java HashMap collection, but once your ArrayMap has
 been successfully implemented and tested, you will replace every instance of
 HashMap in your Madlibs game with an instance of your ArrayMap
 
-##Example Run
+Example Run
+------------
+	Enter a(n) Adjective: interesting
+	Enter a(n) Noun: frog
+	Enter a(n) Plural Noun: dogs
+	
+	There are many (INTERESTING) ways to choose a/an (FROG) to read. First, you
+	could ask for recommendations from your friends and (DOGS).
+	
+	Puzzle complete! Would you like to play again?
 
-Enter a(n) Adjective: interesting
-
-Enter a(n) Noun: frog
-
-Enter a(n) Plural Noun: dogs
-
-There are many (INTERESTING) ways to choose a/an (FROG) to read. First, you
-could ask for recommendations from your friends and (DOGS).
-
-Puzzle complete! Would you like to play again?
-
-##Implementation
+Implementation
+------------
 
 For the implementation of Madlibs, you are to read in a file of Madlibs
 templates, with one template per line, named **templates.txt**. Randomly select
@@ -38,7 +36,8 @@ If a user tries to replace a template mapping with a word not in the Map, or a
 word that doesn’t have the appropriate part of speech, *do something
 reasonable*.
 
-##Part Of Speech Tags
+Part Of Speech Tags
+------------
 
 These are the tags (in the templates) and what they mean for the user
 
@@ -55,7 +54,8 @@ These are the tags (in the templates) and what they mean for the user
 | AA      | Article Adjective          |
 | NUM     | Number                     |
 
-##Hint
+Hint
+------------
 
 To help us do the replacement, we will use a powerful text matching feature
 called “regular expressions”. Here’s some sample code that you should run and
@@ -101,7 +101,8 @@ understand that may be adaptable to your program.
 	System.*out*.println("Final string: " + out);
 
 
-##MVC
+MVC
+------------
 
 You are required to create the game portion of the project using the MVC
 architectural pattern. You must have the following 3 classes:
@@ -218,7 +219,8 @@ public T next()
 Returns an Entry (an `AbstractMap.SimpleEntry<V,E>` for us) that represents the
 next mapping in our Map.
 
-##Using ArrayMap for Madlibs
+Using ArrayMap for Madlibs
+------------
 
 Once you've built and tested your ArrayMap class by itself, you will replace
 HashMap in your Madlibs project with your ArrayMap. Use generic Map references
@@ -235,8 +237,8 @@ the old elements over.
 Make sure you have a test suite that exercises your code to convince yourself
 that it works independently of the Madlibs program.
 
-##Requirements
-
+Requirements
+------------
 -   The ArrayMap class needs all of the methods and inner classes as explained
     above
 
@@ -253,12 +255,12 @@ that it works independently of the Madlibs program.
 
 -   Documentation using javadoc for each method and class.
 
-##Submission
-
+Submission
+------------
 As always, the last pushed commit prior to the due date will be graded.
 
-##Credits
-
+Credits
+------------
 Our dictionary file, “parts\_of\_speech.txt” was borrowed from the Brown Corpus,
 with tags automatically generated from real world documents. There are many
 issues with the dictionary since part of speech tagging is an ongoing subject of
