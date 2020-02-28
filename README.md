@@ -89,7 +89,7 @@ understand that may be adaptable to your program.
 		System.*out*.println("Replacing: " + m.group() + " with " + replacements[i]);
 		
 		//We can replace the first match with our replacement text.
-		out = m.replaceFirst replacements[i++]);
+		out = m.replaceFirst(replacements[i++]);
 		
 		//We now want to perform matches on the string after replacement, so we
 		//need to apply the pattern to the return value of our replace code for
