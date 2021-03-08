@@ -1,13 +1,13 @@
-CSC 335 Project 3: Madlibs/ArrayMap  
+CSC 335 Project 3: Madlibs/ListMap  
 =================
 Project Description
 ------------
 For this project, we will use the Java Collections framework to define a custom
 collection that *is* a **Map**. To test it, you will write a word Madlibs-esque
 word puzzle which relies on your **Map** structure to function. This game should
-first be written using the Java HashMap collection, but once your ArrayMap has
+first be written using the Java HashMap collection, but once your ListMap has
 been successfully implemented and tested, you will replace every instance of
-HashMap in your Madlibs game with an instance of your ArrayMap
+HashMap in your Madlibs game with an instance of your ListMap
 
 Example Run
 ------------
@@ -120,21 +120,18 @@ architectural pattern. You must have the following 3 classes:
    empty spaces (and their according part of speech) to words.
   
 
-ArrayMap
---------
 
-In the first version of your Madlibs program, the Map you used was Java's
-HashMap. However, for this project, you will replace that with a map that you
-create according to the rules of the java.util Framework.
 
-An ArrayMap will be a map (dictionary) that is implemented using two arrays: one
-of keys and one of values. Both arrays will be of type Object.
+ListMap
+-------
+In the first version of your Madlibs program, the Map you used was Java's HashMap. However, for this project, you will replace that with a map that you create according to the rules of the java.util Framework.
 
-Your ArrayMap will be a templated (generic type) that will allow maps of any
-type to any other type. It will be declared as:
+A ListMap will be a map (dictionary) that is implemented using a linked list. Each node will have two Object fields, one for the key and one for the value. It will also have any references to other nodes necessary to construct the list. Create the node as a private inner class of the ListMap class. Grow the list as necessary.
+
+Your ListMap will be a templated (generic type) that will allow maps of any type to any other type. It will be declared as:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-public class ArrayMap<K, V> extends AbstractMap<K,V> 
+public class ListMap<K, V> extends AbstractMap<K,V> 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You are required to provide the implementations of several methods to make your
@@ -168,10 +165,10 @@ You will need to provide a concrete set, which you will do via a private inner
 class:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-private class ArrayMapEntrySet extends AbstractSet<Entry<K,V>>
+private class ListMapEntrySet extends AbstractSet<Entry<K,V>>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You will need to implement these methods in ArrayMapEntrySet:
+You will need to implement these methods in ListMapEntrySet:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @Override
@@ -198,7 +195,7 @@ This returns an iterator that walks over the Set of Entries in the Map. This
 iterator will also be implemented as a private inner class:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-private class ArrayMapEntrySetIterator<T> implements Iterator<T>
+private class ListMapEntrySetIterator<T> implements Iterator<T>
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 And must provide implementations of:
@@ -218,35 +215,27 @@ public T next()
 Returns an Entry (an `AbstractMap.SimpleEntry<V,E>` for us) that represents the
 next mapping in our Map.
 
-Using ArrayMap for Madlibs
-------------
+Using ListMap for Madlibs
+---------------
 
-Once you've built and tested your ArrayMap class by itself, you will replace
-HashMap in your Madlibs project with your ArrayMap. Use generic Map references
-and construct new ArrayMaps. This should require minimal code changes.
+Once you've built and tested your ListMap class by itself, you will replace HashMap in your Madlibs project with your ListMap. Use generic Map references and construct new ListMaps. This should require minimal code changes.
 
-Do not assume your ArrayMap will only be tested against the Cryptogram program.
-Make sure it works for any reasonable application.
+Do not assume your ListMap will only be tested against the Cryptogram program. Make sure it works for any reasonable application.
 
-This means that you will need to do the ArrayList-style growth on your key and
-value arrays. You will need to have an initial capacity and when put() is unable
-to find any space in the arrays, you will need to double their sizes and copy
-the old elements over.
-
-Make sure you have a test suite that exercises your code to convince yourself
-that it works independently of the Madlibs program.
+This means that each insert you will need to extend the internal linked list. Make a inner class node type to hold your key, value pairs and necessary pointers.
+Make sure you have a test suite that exercises your code to convince yourself that it works independently of the Madlibs program.
 
 Requirements
 ------------
--   The ArrayMap class needs all of the methods and inner classes as explained
+-   The ListMap class needs all of the methods and inner classes as explained
     above
 
--   A reasonable Test Suite that convinces you that your ArrayMap works (we will
+-   A reasonable Test Suite that convinces you that your ListMap works (we will
     grade with our own test suite for correctness, but yours should exist and do
     what we want our test suite to do).
 
--   Your test suite should reach 100% branch coverage on ArrayMap,
-    ArrayMapEntrySet, and ArrayMapEntrySetIterator
+-   Your test suite should reach 100% branch coverage on ListMap,
+    ListMapEntrySet, and ListMapEntrySetIterator
 
 -   You may use any of the templated methods provided by AbstractMap or
     AbstractCollection, and these also will serve as good methods to use in your
